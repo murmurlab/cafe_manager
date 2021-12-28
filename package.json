@@ -1,0 +1,17 @@
+{
+  "name": "cafe_manager",
+  "version": "1.0.0",
+  "description": "qr code web server app for cafes",
+  "main": "server.js",
+  "scripts": {
+    "test": "npx nodemon server.js"
+  },
+  "keywords": [
+    "cafe",
+    "manage",
+    "app",
+    "restaurant"
+  ],
+  "author": "murmurLAB",
+  "license": "MIT"
+}
