@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "qr code web server app for cafes",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "npx nodemon server.js"
   },
@@ -13,5 +14,8 @@
     "restaurant"
   ],
   "author": "murmurLAB",
-  "license": "CC-BY-4.0"
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "eslint": "^8.5.0"
+  }
 }
