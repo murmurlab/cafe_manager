@@ -10,7 +10,7 @@ const listener = (req,res)=>{
 	default:{
 		fs.readFile("./client/404.html",(e,d)=>{
 			if(e){
-				
+				console.log("404 page not found")
 			}else{
 				res.write(d)
 				res.end()
