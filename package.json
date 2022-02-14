@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "npx nodemon server.js"
+    "start": "echo \"Fahrenayt44!\" | su -c \"ip_adres=$(ip a | grep 'inet 192' | awk '{print $2}' | cut -d '/' -f1) nodemon\" root"
   },
   "keywords": [
     "cafe",
@@ -16,6 +16,13 @@
   "author": "murmurLAB",
   "license": "CC-BY-4.0",
   "devDependencies": {
-    "eslint": "^8.5.0"
+    "eslint": "^8.5.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.1.1",
+    "mongodb": "^4.2.2",
+    "ws": "^8.4.0"
   }
 }

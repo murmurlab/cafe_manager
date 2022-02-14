@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script defer src="manager.js"></script>
+	<style>
+		#div1 {
+            color: #ffffff;
+            font-family: "Courier New", monospace;
+			font-weight: bold;
+			font-size: 30px;
+			display: inline;
+        }
+		#form1 {
+			display: inline;
+		}
+		body {
+            background-color: #000000;
+        }
+	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manage Orders</title>
+</head>
+<body>
+	<div id="div1">Manages</div>
+	<form id="form1">
+		<input required minlength="16" maxlength="16" placeholder="token here" type="text" id="token">
+		<button id="btn">submit</button>
+	</form>
+	<a href="/customer/">müşteri sipariş</a>
+	<a href="/waiter/">garson giriş</a>
+	<a href="/manager/">yönetici giriş</a>
+	<a href="/mother/">ana makine</a>
+</body>
+</html>

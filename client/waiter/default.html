@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manage Tokens</title>
+	<script defer src="admin.js"></script>
+	<style>
+		#div1 {
+            color: #ffffff;
+            font-family: "Courier New", monospace;
+			font-weight: bold;
+			font-size: 30px;
+			display: inline;
+        }
+		body {
+            background-color: #000000;
+        }
+		#form1 {
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		take a token
+	</div>
+	<form id="form1">
+		<input required minlength="3" maxlength="16" placeholder="id" id="nick">
+		<input required placeholder="pass" type="password" id="pass"></input>
+		<button id="btn">submit</button>
+	</form>
+</body>
+</html>
