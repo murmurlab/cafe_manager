@@ -1,7 +1,7 @@
 import https from "https"
 import fs from "fs"
 import { WebSocketServer } from "ws"
-import { MongoClient } from "mongodb"
+import { MongoClient, ObjectId } from "mongodb"
 import { Buffer } from "buffer"
 import { JWT } from "./jwt.js"
 import util from "util"
@@ -117,23 +117,40 @@ const channelListener = (ws, req) => {
 		if(!d.length==37)return console.log("invalid array length")
 		console.log(d.subarray(0))
 		console.log("id: ", d.subarray(21).toString(), enc.decode(d.subarray(21)))
-
+		if(!d.subarray(21).every(e=>(e<=122&&e>=97)||(e<=57&&e>=48)||e==0)) return console.log("invalid char") 
+		console.log("ascii passed ✅")
 		switch (d[0]) {
-			case 0:{//mother login
-				if(d.subarray(21).every(e=>(e<=122&&e>=97)||(e<=57&&e>=48)||e==0)){
-					const id = d.subarray(21).filter(e=>e!=0).toString()
-					console.log(id)
-					console.log("ascii passed ✅")
-					if (await db.collection("c1").findOne({ mothers: {main}})) {
-						console.log(1)
-						console.log(new Buffer.from(req.toString() + ws.toString()))
-						ws.send()
-					} else {
-						console.log(0)
+			case 0:{//login
+
+				const id = d.subarray(21).filter(e=>e!=0).toString()
+				console.log(id)
+				console.log(d.subarray(1, 21))
+				db.collection("c1").findOne({
+					$and: [
+						{["all."+id]: {$exists: true} },
+						{["all."+id+".hash_array"] : { $all: Array.from(d.subarray(1,21))} }
+					]
+				}, {projection:{["all."+id+".type"]:1}},(e,d)=>{
+					if(e) console.log("error: ",e)
+					if(d){
+						console.log(d)
+						if (d.all[id].type == 0){
+							const file = fs.readFileSync("./client/mother/mothers.html")
+							const buffer = new ArrayBuffer(file.length+1)
+							const view = new Uint8Array(buffer)
+							view.set(file,1)
+							view[0] = 0
+							console.log(view)
+							ws.send(view)
+						} else {
+							console.log(0)
+						}
+					}else{
+						console.log("not found")
 					}
-				}else{
-					console.log("ascii attack")
-				}
+				})
+
+				
 				console.log("verify ", d[0])
 				//console bu yorum highlight denemesi için
 				

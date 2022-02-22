@@ -38,6 +38,7 @@ const events = {
 	},
 	"message": (e) => {
 		console.log("message from server: ", e)
+		console.log(e.data)
 	}
 }
 
